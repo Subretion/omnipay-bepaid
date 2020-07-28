@@ -18,7 +18,7 @@
     ],
     "license": "MIT",
     "autoload": {
-        "psr-4": { "Subretion\\Omnipay\\BePaid\\" : "src/" }
+        "psr-4": { "Subretion\\Omnipay\\Bepaid\\" : "src/" }
     },
     "require": {
         "omnipay/common": "^3.0"
