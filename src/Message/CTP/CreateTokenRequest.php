@@ -15,11 +15,11 @@ use Subretion\Omnipay\Bepaid\GatewayCTP;
 abstract class CreateTokenRequest extends AbstractBepaidRequest
 {
   
-    const TRANSACTION_TYPE_AUTHORIZATION = '';
+    const TRANSACTION_TYPE_AUTHORIZATION = 'authorization';
     
-    const TRANSACTION_TYPE_PAYMENT = '';
+    const TRANSACTION_TYPE_PAYMENT = 'payment';
     
-    const TRANSACTION_TYPE_TOKENIZATION = '';
+    const TRANSACTION_TYPE_TOKENIZATION = 'tokenization';
 
     /**
      * @return string
