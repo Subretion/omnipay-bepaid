@@ -292,7 +292,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         $checkout['settings'] =& $settings;
         $data['checkout'] =& $checkout;
         
-        $order['amount'] = $this->getAmount();
+        $order['amount'] = (int) ($this->getAmount() * 100);
         $order['currency'] = $this->getCurrency();
         $order['description'] = $this->getDescription();
         
