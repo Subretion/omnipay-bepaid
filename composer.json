@@ -14,13 +14,13 @@
         {
             "name": "Arthur Nikitenko",
             "email": "niko2040@4e.by"
-        },
+        }
     ],
     "license": "MIT",
     "autoload": {
         "psr-4": { "Subretion\\Omnipay\\BePaid" : "src/" }
     },
     "require": {
-        "omnipay/common": "^3.0",
-    },
+        "omnipay/common": "^3.0"
+    }
 }
