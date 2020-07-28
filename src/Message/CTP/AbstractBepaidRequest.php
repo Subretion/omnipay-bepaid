@@ -78,7 +78,7 @@ abstract class AbstractBepaidRequest extends AbstractRequest
     protected function sendRequest($method, $endpoint, array $data = null)
     {
         $versions = [
-            'Omnipay-bePaidCTP/' . Gateway::GATEWAY_VERSION,
+            'Omnipay-bePaidCTP/' . GatewayCTP::GATEWAY_VERSION,
             'PHP/' . phpversion(),
         ];
         
