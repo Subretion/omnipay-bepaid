@@ -281,7 +281,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
      */
     public function getData()
     {
-        $this->validate('shopId', 'secretKey', 'amount', 'currency', 'description', 'transactionType');
+        $this->validate('shopId', 'secretKey', 'amount', 'currency', 'description');
 
         $data = [];
         $checkout = []; $order = []; $settings = [];
