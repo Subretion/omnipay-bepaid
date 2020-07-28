@@ -1,0 +1,26 @@
+{
+    "name": "subretion/omnipay-bepaid",
+    "type": "library",
+    "description": "BePaid driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "bepaid",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "authors": [
+        {
+            "name": "Arthur Nikitenko",
+            "email": "niko2040@4e.by"
+        },
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Subretion\\Omnipay\\BePaid" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^3.0",
+    },
+}
