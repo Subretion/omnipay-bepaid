@@ -6,9 +6,9 @@ use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
 
 /**
- * Create a payment with the Mollie API.
+ * Create a payment with the bePaid CTP API.
  *
- * @see https://docs.mollie.com/reference/v2/payments-api/create-payment
+ * @see https://docs.bepaid.by/en/checkout/payment-token
  * @method PurchaseResponse send()
  */
 class PurchaseRequest extends CreateTokenRequest
@@ -28,7 +28,7 @@ class PurchaseRequest extends CreateTokenRequest
      */
     public function sendData($data)
     {
-        $response = $this->sendRequest(self::POST, '/payments', $data);
+        $response = $this->sendRequest(self::POST, '/checkouts', $data);
 
         return $this->response = new PurchaseResponse($this, $response);
     }
