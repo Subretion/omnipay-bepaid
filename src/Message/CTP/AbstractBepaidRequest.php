@@ -65,7 +65,7 @@ abstract class AbstractBepaidRequest extends AbstractRequest
      * @param  string $value
      * @return $this
      */
-    public function getBaseUrl($value)
+    public function getBaseUrl()
     {
         return $this->getParameter('baseUrl');
     }
