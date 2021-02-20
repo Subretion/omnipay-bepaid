@@ -53,20 +53,21 @@ abstract class AbstractBepaidRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string $value
      * @return $this
      */
-    public function setTransactionId($value)
+    public function setBaseUrl($value)
     {
-        return $this->setParameter('transactionId', $value);
+        return $this->setParameter('baseUrl', $value);
     }
 
     /**
-     * @return string
+     * @param  string $value
+     * @return $this
      */
-    public function getTransactionId()
+    public function getBaseUrl($value)
     {
-        return $this->getParameter('transactionId');
+        return $this->getParameter('baseUrl');
     }
 
     /**
