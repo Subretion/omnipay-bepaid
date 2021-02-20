@@ -78,6 +78,24 @@ class GatewayCTP extends AbstractGateway
     }
 
     /**
+     * @param  string $value
+     * @return $this
+     */
+    public function setBaseUrl($value)
+    {
+        return $this->setParameter('baseUrl', $value);
+    }
+
+    /**
+     * @param  string $value
+     * @return $this
+     */
+    public function getBaseUrl($value)
+    {
+        return $this->getParameter('baseUrl');
+    }
+
+    /**
      * @param  array $parameters
      * @return PurchaseRequest
      */

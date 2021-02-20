@@ -95,9 +95,11 @@ abstract class AbstractBepaidRequest extends AbstractRequest
             $headers['X-Bepaid-Client-Info'] = php_uname();
         }
 
+        $baseUrl = (null !== $this->getBaseUrl()) ? $this->getBaseUrl() : $this->baseUrl;
+
         $response = $this->httpClient->request(
             $method,
-            $this->baseUrl . $endpoint,
+            $baseUrl . $endpoint,
             $headers,
             ($data === null || $data === []) ? null : json_encode($data)
         );
@@ -105,12 +107,4 @@ abstract class AbstractBepaidRequest extends AbstractRequest
         return json_decode($response->getBody(), true);
     }
 
-
-    /*protected function createAmountObject($amount)
-    {
-        return isset($amount) ? [
-            'currency' => $this->getCurrency(),
-            'value' => $this->formatCurrency($amount),
-        ] : null;
-    }*/
 }
