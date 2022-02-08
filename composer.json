@@ -26,6 +26,6 @@
         }
     },
     "require": {
-        "omnipay/common": "^3.0"
+        "omnipay/common": "dev-master"
     }
 }
