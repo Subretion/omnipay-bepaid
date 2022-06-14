@@ -90,6 +90,7 @@ abstract class AbstractBepaidRequest extends AbstractRequest
             'Content-Type' => "application/json",
             'Authorization' => 'Basic ' . $basicString,
             'User-Agent' => implode(' ', $versions),
+            'X-API-Version' => '2'
         ];
 
         if (function_exists("php_uname")) {

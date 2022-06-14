@@ -2,6 +2,7 @@
 
 namespace Subretion\Omnipay\Bepaid\Message\CTP;
 
+use DateTimeImmutable;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
 use Subretion\Omnipay\Bepaid\GatewayCTP;
@@ -20,6 +21,9 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     const TRANSACTION_TYPE_PAYMENT = 'payment';
     
     const TRANSACTION_TYPE_TOKENIZATION = 'tokenization';
+
+    const TRANSACTION_TYPE_CHARGE = 'charge';
+
 
     /**
      * @return string
@@ -56,7 +60,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDynamicBillingDescriptor()
     {
@@ -73,7 +77,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
     
     /**
-     * @return string
+     * @return string|null
      */
     public function getExpiredAt(){
         return $this->getParameter('expiredAt');
@@ -88,7 +92,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLanguage()
     {
@@ -105,7 +109,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getAdditionalData()
     {
@@ -122,7 +126,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
     
     /**
-     * @return string
+     * @return string|null
      */
     public function getDeclineUrl()
     {
@@ -139,7 +143,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
     
     /**
-     * @return string
+     * @return string|null
      */
     public function getFailUrl()
     {
@@ -153,6 +157,23 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     public function setFailUrl($value)
     {
         return $this->setParameter('failUrl', $value);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVerifyUrl()
+    {
+        return $this->getParameter('verifyUrl');
+    }
+
+    /**
+     * @param string $value
+     * @return $this
+     */
+    public function setVerifyUrl($value)
+    {
+        return $this->setParameter('verifyUrl', $value);
     }
 
     /**
@@ -276,6 +297,24 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
     }
 
     /**
+     * @param integer $value
+     * @return $this
+     */
+    public function setAttempts($value)
+    {
+        $this->setParameter('attempts', $value);
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAttempts()
+    {
+        return $this->getParameter('attempts');
+    }
+
+    /**
      * @return array
      * @throws InvalidRequestException
      */
@@ -302,6 +341,10 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         
         if($descriptor = $this->getDynamicBillingDescriptor()){
             $checkout['dynamic_billing_descriptor'] = $descriptor;
+        }
+        
+        if($attempts = $this->getAttempts()){
+            $checkout['attempts'] = $attempts;
         }
         
         if($trackingId = $this->getTransactionId()){
@@ -336,6 +379,11 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         $notifyUrl = $this->getNotifyUrl();
         if(null !== $notifyUrl){
             $settings['notification_url'] = $notifyUrl;
+        }
+
+        $verifyUrl = $this->getVerifyUrl();
+        if(null !== $verifyUrl){
+            $settings['verification_url'] = $verifyUrl;
         }
         
         $autoReturn = $this->getAutoReturn();
