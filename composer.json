@@ -26,6 +26,6 @@
         }
     },
     "require": {
-        "omnipay/common": "3.1.x-dev@dev"
+        "omnipay/common": "3.2.0"
     }
 }
