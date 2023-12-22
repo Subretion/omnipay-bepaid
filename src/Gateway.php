@@ -1,11 +1,11 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid;
+namespace Omnipay\Bepaid;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\RequestInterface;
-use Subretion\Omnipay\Bepaid\Message\CTP\PurchaseRequest;
-use Subretion\Omnipay\Bepaid\Message\CTP\AcceptNotification;
+use Omnipay\Bepaid\Message\PurchaseRequest;
+use Omnipay\Bepaid\Message\AcceptNotification;
 
 /**
  * BePaid Gateway provides a wrapper for bePaid API.
@@ -17,7 +17,7 @@ use Subretion\Omnipay\Bepaid\Message\CTP\AcceptNotification;
  * @method RequestInterface completePurchase(array $options = array())
  *
  */
-class GatewayCTP extends AbstractGateway
+class Gateway extends AbstractGateway
 {
     /**
      * Version of our gateway.

@@ -1,15 +1,14 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 use \Omnipay\Common\ItemBag;
 use \Omnipay\Common\Message\AbstractRequest;
-use \Subretion\Omnipay\Bepaid\GatewayCTP;
 
 /**
  * This class holds all the common things for all of Bepaid requests.
  *
- * @see https://docs.mollie.com/index
+ * @see https://docs.bepaid.by/ru/integration/widget/setup
  */
 abstract class AbstractBepaidRequest extends AbstractRequest
 {

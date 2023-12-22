@@ -1,6 +1,6 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 /**
  * @see https://docs.mollie.com/reference/v2/payments-api/create-payment

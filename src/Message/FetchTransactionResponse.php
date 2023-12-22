@@ -1,11 +1,11 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 
 /**
- * @see https://docs.bepaid.by/en/gateway/transactions/payment
+ * @see https://docs.bepaid.by/ru/integration/widget/payment_token
  */
 class FetchTransactionResponse extends AbstractBepaidResponse implements RedirectResponseInterface
 {
@@ -118,10 +118,10 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function getTransactionReference()
     {
-        if (isset($this->data['transaction']['tracking_id'])) {
-            return $this->data['transaction']['tracking_id'];
-        } elseif(isset($this->data['order']['tracking_id'])) {
-            return $this->data['order']['tracking_id'];
+        if (isset($this->data['transaction']['uid'])) {
+            return $this->data['transaction']['uid'];
+        } elseif(isset($this->data['uid'])){
+            return $this->data['uid'];
         }
 
         return null;
@@ -132,10 +132,10 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function getTransactionId()
     {
-        if (isset($this->data['transaction']['uid'])) {
-            return $this->data['transaction']['uid'];
-        } elseif(isset($this->data['uid'])){
-            return $this->data['uid'];
+        if (isset($this->data['transaction']['tracking_id'])) {
+            return $this->data['transaction']['tracking_id'];
+        } elseif(isset($this->data['order']['tracking_id'])) {
+            return $this->data['order']['tracking_id'];
         }
 
         return null;

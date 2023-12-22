@@ -1,6 +1,6 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;

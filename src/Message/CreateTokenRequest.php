@@ -1,16 +1,15 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 use DateTimeImmutable;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
-use Subretion\Omnipay\Bepaid\GatewayCTP;
 
 /**
- * Create a payment with the Mollie API.
+ * Create a payment with the Bepaid API.
  *
- * @see https://docs.mollie.com/reference/v2/payments-api/create-payment
+ * @see https://docs.bepaid.by/ru/integration/widget/payment_token
  * @method PurchaseResponse send()
  */
 abstract class CreateTokenRequest extends AbstractBepaidRequest

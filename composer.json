@@ -18,7 +18,7 @@
     ],
     "license": "MIT",
     "autoload": {
-        "psr-4": { "Subretion\\Omnipay\\Bepaid\\" : "src/" }
+        "psr-4": { "Omnipay\\Bepaid\\" : "src/" }
     },
     "extra": {
         "branch-alias": {
@@ -26,6 +26,14 @@
         }
     },
     "require": {
-        "omnipay/common": "3.2.0"
+        "omnipay/common": "^3.2.0",
+        "symfony/http-client": "^7.0",
+        "php-http/httplug": "^2.4",
+        "nyholm/psr7": "1.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }

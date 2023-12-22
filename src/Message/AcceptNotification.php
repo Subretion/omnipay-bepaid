@@ -1,6 +1,6 @@
 <?php
 
-namespace Subretion\Omnipay\Bepaid\Message\CTP;
+namespace Omnipay\Bepaid\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
@@ -9,7 +9,7 @@ use Omnipay\Common\Message\AbstractRequest;
 /**
  * Accept Webhook notifications via bePaid API
  *
- * @see https://docs.bepaid.by/en/webhooks
+ * @see https://docs.bepaid.by/ru/dev_tools/webhooks
  * @method AcceptNotification send()
  */
 class AcceptNotification extends AbstractRequest
