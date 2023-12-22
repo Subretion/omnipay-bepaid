@@ -29,7 +29,7 @@ class Gateway extends AbstractGateway
      */
     public function getName()
     {
-        return 'BePaidCTP';
+        return 'Bepaid';
     }
 
     /**
