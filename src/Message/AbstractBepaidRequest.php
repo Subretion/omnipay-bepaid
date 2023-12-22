@@ -2,6 +2,7 @@
 
 namespace Omnipay\Bepaid\Message;
 
+use Omnipay\Bepaid\Gateway;
 use \Omnipay\Common\ItemBag;
 use \Omnipay\Common\Message\AbstractRequest;
 
@@ -78,7 +79,7 @@ abstract class AbstractBepaidRequest extends AbstractRequest
     protected function sendRequest($method, $endpoint, array $data = null)
     {
         $versions = [
-            'Omnipay-bePaidCTP/' . GatewayCTP::GATEWAY_VERSION,
+            'Omnipay-bePaidCTP/' . Gateway::GATEWAY_VERSION,
             'PHP/' . phpversion(),
         ];
         

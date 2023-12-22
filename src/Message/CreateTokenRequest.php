@@ -5,6 +5,7 @@ namespace Omnipay\Bepaid\Message;
 use DateTimeImmutable;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\Bepaid\Gateway;
 
 /**
  * Create a payment with the Bepaid API.
@@ -324,7 +325,7 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         $data = [];
         $checkout = []; $order = []; $settings = [];
         
-        $checkout['version'] = GatewayCTP::GATEWAY_VERSION;
+        $checkout['version'] = Gateway::GATEWAY_VERSION;
         $checkout['transaction_type'] = $this->getTransactionType();
         $checkout['order'] =& $order;
         $checkout['settings'] =& $settings;
