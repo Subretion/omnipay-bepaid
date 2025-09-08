@@ -3,7 +3,7 @@
 namespace Omnipay\Bepaid\Message;
 
 /**
- * @see https://docs.mollie.com/reference/v2/payments-api/create-payment
+ * @see https://docs.bepaid.by/en/checkout/payment-token
  */
 class PurchaseResponse extends FetchTransactionResponse
 {
