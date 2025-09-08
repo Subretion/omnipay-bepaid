@@ -119,4 +119,11 @@ class Gateway extends AbstractGateway
         return $request;
     }
 
+    public function createCard(array $parameters = []){
+        /** @var AcceptNotification $request */
+        $request = $this->createRequest(CreateCardRequest::class, $parameters);
+
+        return $request;
+    }
+
 }
