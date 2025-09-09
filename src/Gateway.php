@@ -6,6 +6,7 @@ use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Bepaid\Message\PurchaseRequest;
 use Omnipay\Bepaid\Message\AcceptNotification;
+use Omnipay\Bepaid\Message\CreateCardRequest;
 
 /**
  * BePaid Gateway provides a wrapper for bePaid API.
