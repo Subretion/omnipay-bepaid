@@ -314,6 +314,26 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         return $this->getParameter('attempts');
     }
 
+
+    /**
+     * @param bool $value
+     * @return $this
+     */
+    public function setAutoPay($value)
+    {
+        $this->setParameter('autoPay', $value);
+        return $this;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function getAutoPay()
+    {
+        return $this->getParameter('autoPay');
+    }
+
     /**
      * @return array
      * @throws InvalidRequestException
@@ -406,6 +426,11 @@ abstract class CreateTokenRequest extends AbstractBepaidRequest
         $customerFields = $this->getCustomerFields();
         if(null !== $customerFields){
             $settings['customer_fields'] = $customerFields;
+        }
+
+        $autopay = $this->getAutoPay();
+        if($autopay){
+            $settings['auto_pay'] = $autopay;
         }
         
         $customer = $this->getCustomer();
