@@ -68,7 +68,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function isCancelled()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         return isset($data['void']['status'])
@@ -81,7 +81,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function isPaid()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         return (isset($data['payment']['status'])
@@ -95,7 +95,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function isAuthorized()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         return isset($data['authorization']['status'])
@@ -116,7 +116,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function isExpired()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         return (isset($data['status']) && 'expired' === $data['status'])
@@ -126,7 +126,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function isRefunded()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         return isset($data['refund']['status'])
@@ -139,7 +139,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function getTransactionReference()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         if (isset($data['uid'])) {
@@ -157,7 +157,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function getTransactionId()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         if (isset($data['tracking_id'])) {
@@ -191,7 +191,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function getAmount()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         if (isset($data['amount'])){
@@ -204,7 +204,7 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     public function getCurrency()
     {
         $data = $this->data;
-        if(isset($data['transaction'])){
+        if(count($data) === 1 && isset($data['transaction'])){
             $data = $data['transaction'];
         }
         if (isset($data['currency'])) {
