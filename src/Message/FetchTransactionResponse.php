@@ -84,8 +84,9 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
         if(isset($data['transaction'])){
             $data = $data['transaction'];
         }
-        return isset($this->data['transaction']['payment']['status'])
-            && 'successful' === $this->data['transaction']['payment']['status'];
+        return (isset($data['payment']['status'])
+            && 'successful' === $data['payment']['status'])
+            || (isset($data['status']) && 'successful' === $data['status']);
     }
 
     /**
@@ -97,8 +98,8 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
         if(isset($data['transaction'])){
             $data = $data['transaction'];
         }
-        return isset($this->data['transaction']['authorization']['status'])
-            && 'successful' === $this->data['transaction']['authorization']['status'];
+        return isset($data['authorization']['status'])
+            && 'successful' === $data['authorization']['status'];
     }
 
     /**
@@ -118,9 +119,8 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
         if(isset($data['transaction'])){
             $data = $data['transaction'];
         }
-        return isset($data['status'])
-               || isset($this->data['expired']) && $this->data['expired'] 
-               || 'expired' === $data['status'];
+        return (isset($data['status']) && 'expired' === $data['status'])
+               || isset($this->data['expired']) && $this->data['expired'];
     }
 
     public function isRefunded()
