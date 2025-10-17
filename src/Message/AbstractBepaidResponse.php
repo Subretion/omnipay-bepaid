@@ -13,7 +13,7 @@ class AbstractBepaidResponse extends AbstractResponse
     {        
         if(isset($this->data['transaction']) && $this->data['transaction']['status'] == 'successful'){
             return true;
-        }
+        } else if($this->data['status'] == 'successful')
         
         return false;
     }

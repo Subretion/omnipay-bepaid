@@ -67,8 +67,12 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function isCancelled()
     {
-        return isset($this->data['transaction']['void']['status'])
-            && 'successful' === $this->data['transaction']['void']['status'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        return isset($data['void']['status'])
+            && 'successful' === $data['void']['status'];
     }
 
     /**
@@ -76,6 +80,10 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function isPaid()
     {
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
         return isset($this->data['transaction']['payment']['status'])
             && 'successful' === $this->data['transaction']['payment']['status'];
     }
@@ -85,6 +93,10 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function isAuthorized()
     {
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
         return isset($this->data['transaction']['authorization']['status'])
             && 'successful' === $this->data['transaction']['authorization']['status'];
     }
@@ -102,15 +114,23 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function isExpired()
     {
-        return isset($this->data['transaction']['status'])
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        return isset($data['status'])
                || isset($this->data['expired']) && $this->data['expired'] 
-               || 'expired' === $this->data['transaction']['status'];
+               || 'expired' === $data['status'];
     }
 
     public function isRefunded()
     {
-        return isset($this->data['transaction']['refund']['status'])
-            && 'successful' === $this->data['transaction']['refund']['status'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        return isset($data['refund']['status'])
+            && 'successful' === $data['refund']['status'];
     }
 
     /**
@@ -118,8 +138,12 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function getTransactionReference()
     {
-        if (isset($this->data['transaction']['uid'])) {
-            return $this->data['transaction']['uid'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        if (isset($data['uid'])) {
+            return $data['uid'];
         } elseif(isset($this->data['uid'])){
             return $this->data['uid'];
         }
@@ -132,8 +156,12 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function getTransactionId()
     {
-        if (isset($this->data['transaction']['tracking_id'])) {
-            return $this->data['transaction']['tracking_id'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        if (isset($data['tracking_id'])) {
+            return $data['tracking_id'];
         } elseif(isset($this->data['order']['tracking_id'])) {
             return $this->data['order']['tracking_id'];
         }
@@ -162,8 +190,12 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
      */
     public function getAmount()
     {
-        if (isset($this->data['transaction']['amount'])){
-            return $this->data['transaction']['amount'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        if (isset($data['amount'])){
+            return $data['amount'];
         }
 
         return null;
@@ -171,8 +203,12 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
 
     public function getCurrency()
     {
-        if (isset($this->data['transaction']['currency'])) {
-            return $this->data['transaction']['currency'];
+        $data = $this->data;
+        if(isset($data['transaction'])){
+            $data = $data['transaction'];
+        }
+        if (isset($data['currency'])) {
+            return $data['currency'];
         }
 
         return null;
@@ -185,6 +221,8 @@ class FetchTransactionResponse extends AbstractBepaidResponse implements Redirec
     {
         if (isset($this->data['checkout']['token'])) {
             return $this->data['checkout']['token'];
+        } elseif ($this->data['token']){
+            return $this->data['token'];
         }
 
         return null;
